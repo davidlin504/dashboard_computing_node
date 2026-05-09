@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 import { IconUser, IconLock, IconLogin, IconAlert } from '../assets/icons/icons.jsx'
 import styles from '../styles/LoginPage.module.css'
 

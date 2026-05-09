@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react'
 import { MOCK_HOSTS } from '../utils/helpers'
-
-const API_BASE = ''
+import { useAuth } from '../hooks/useAuth'
+import { API } from '../constants'
 
 export function useHosts() {
-  const [hosts, setHosts] = useState([])
+  const [hosts, setHosts] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -12,7 +12,7 @@ export function useHosts() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${API_BASE}/hosts`)
+      const res = await fetch(API.hosts)
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
       setHosts(data)
@@ -25,6 +25,7 @@ export function useHosts() {
     }
   }, [])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchHosts() }, [fetchHosts])
 
   return { hosts, loading, error, refetch: fetchHosts }
@@ -32,11 +33,12 @@ export function useHosts() {
 
 export function usePowerOn() {
   const [loadingMap, setLoadingMap] = useState({})
+  const { csrfToken } = useAuth()
 
-  const powerOn = useCallback(async (bmcIp, power, csrfToken, onSuccess) => {
+  const powerOperation = useCallback(async (bmcIp, power, onSuccess) => {
     setLoadingMap(prev => ({ ...prev, [bmcIp]: true }))
     try {
-      const res = await fetch(`${API_BASE}/power`, {
+      const res = await fetch(API.power, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +56,7 @@ export function usePowerOn() {
     } finally {
       setLoadingMap(prev => ({ ...prev, [bmcIp]: false }))
     }
-  }, [])
+  }, [csrfToken])
 
-  return { powerOn, loadingMap }
+  return { powerOperation, loadingMap }
 }

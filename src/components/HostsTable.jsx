@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 import { usePowerOn } from '../hooks/useHosts'
 import {
   IconPower, IconCpu, IconChevronLeft, IconChevronRight, IconDatabase
@@ -9,8 +9,8 @@ import styles from '../styles/Table.module.css'
 const PAGE_SIZE = 5
 
 export default function HostsTable({ hosts, onRequireLogin }) {
-  const { isLoggedIn, csrfToken } = useAuth()
-  const { powerOn, loadingMap } = usePowerOn()
+  const { isLoggedIn } = useAuth()
+  const { powerOperation, loadingMap } = usePowerOn()
   const [page, setPage] = useState(1)
 
   const totalPages = Math.max(1, Math.ceil(hosts.length / PAGE_SIZE))
@@ -21,7 +21,7 @@ export default function HostsTable({ hosts, onRequireLogin }) {
       onRequireLogin()
       return
     }
-    await powerOn(bmc_ip, power, csrfToken)
+    await powerOperation(bmc_ip, power)
   }
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)

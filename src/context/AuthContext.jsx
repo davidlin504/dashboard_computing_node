@@ -1,8 +1,7 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import { AuthContext } from '../hooks/useAuth';
+import { API } from '../constants'
 
-const AuthContext = createContext(null)
-
-const API_BASE = '' // Set to your backend URL if needed, e.g. 'http://localhost:8000'
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
@@ -20,7 +19,7 @@ export function AuthProvider({ children }) {
     setError(null)
     try {
       const body = new URLSearchParams({ username, password })
-      const res = await fetch(`${API_BASE}/auth/login`, {
+      const res = await fetch(API.login, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString(),
@@ -51,7 +50,7 @@ export function AuthProvider({ children }) {
       return
     }
     try {
-      await fetch(`${API_BASE}/auth/logout`, {
+      await fetch(API.logout, {
         method: 'DELETE',
         headers: {
           'X-CSRFTOKEN': csrfToken,
@@ -73,8 +72,3 @@ export function AuthProvider({ children }) {
   )
 }
 
-export const useAuth = () => {
-  const ctx = useContext(AuthContext)
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider')
-  return ctx
-}
