@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { MOCK_HOSTS } from '../utils/helpers'
 import { useAuth } from '../hooks/useAuth'
+import { useError } from '../hooks/useError'
 import { API } from '../constants'
 
 export function useHosts() {
@@ -34,6 +35,7 @@ export function useHosts() {
 export function usePowerOn() {
   const [loadingMap, setLoadingMap] = useState({})
   const { csrfToken } = useAuth()
+  const { pushError } = useError()
 
   const powerOperation = useCallback(async (bmcIp, power, onSuccess) => {
     setLoadingMap(prev => ({ ...prev, [bmcIp]: true }))
@@ -52,11 +54,12 @@ export function usePowerOn() {
       return { success: true }
     } catch (err) {
       console.error('Power on failed:', err)
+      pushError?.(`電源操作失敗：${bmcIp}`, err.message)
       return { success: false, error: err.message }
     } finally {
       setLoadingMap(prev => ({ ...prev, [bmcIp]: false }))
     }
-  }, [csrfToken])
+  }, [csrfToken, pushError])
 
   return { powerOperation, loadingMap }
 }

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { AuthProvider } from './context/AuthContext'
+import { ErrorProvider } from './context/ErrorContext'
 import Navbar from './components/Navbar'
 import HostsPage from './pages/HostsPage'
 import LoginModal from './components/LoginModal'
+import ErrorBanner from './components/ErrorBanner'
 import './styles/globals.css'
 
 function AppInner() {
@@ -22,6 +24,7 @@ function AppInner() {
   return (
     <>
       <Navbar onLoginClick={() => openLogin()} />
+      <ErrorBanner />
       <HostsPage onRequireLogin={() => openLogin('power')} />
       {showLogin && (
         <LoginModal onClose={closeLogin} redirectReason={loginReason} />
@@ -33,7 +36,9 @@ function AppInner() {
 export default function App() {
   return (
     <AuthProvider>
-      <AppInner />
+      <ErrorProvider>
+        <AppInner />
+      </ErrorProvider>
     </AuthProvider>
   )
 }
