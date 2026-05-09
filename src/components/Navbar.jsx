@@ -15,7 +15,7 @@ export default function Navbar({ onLoginClick }) {
       <nav className={styles.nav}>
         <a className={styles.navBrand} href="/">
           <IconServer className={styles.navLogo} />
-          <span className={styles.navTitle}>HOST_MGR</span>
+          <span className={styles.navTitle}>Host_management</span>
         </a>
 
         <div className={styles.navSpacer} />

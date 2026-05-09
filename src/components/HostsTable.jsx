@@ -86,7 +86,7 @@ export default function HostsTable({ hosts, onRequireLogin }) {
                     <button
                       className={`${styles.bootBtn} ${loadingMap[host.bmc_ip] ? styles.bootBtnLoading : ''}`}
                       onClick={() => handleBoot(host.bmc_ip, host.power)}
-                      disabled={loadingMap[host.bmc_ip]}
+                      disabled={loadingMap[host.bmc_ip] || host.status === 'busy' }
                       title={isLoggedIn ? '開機' : '需要登入'}
                     >
                       {loadingMap[host.bmc_ip] ? (

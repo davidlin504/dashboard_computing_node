@@ -54,7 +54,7 @@ export function usePowerOn() {
       return { success: true }
     } catch (err) {
       console.error('Power on failed:', err)
-      pushError?.(`電源操作失敗：${bmcIp}`, err.message)
+      pushError?.(`電源操作: ${power == 1 ? '關機' : '開機'}失敗 ${bmcIp}`, err.message)
       return { success: false, error: err.message }
     } finally {
       setLoadingMap(prev => ({ ...prev, [bmcIp]: false }))
