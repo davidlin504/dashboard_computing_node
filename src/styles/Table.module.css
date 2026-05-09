@@ -40,12 +40,38 @@
 
 .table tbody tr {
   transition: background var(--transition);
-  animation: fadeIn 0.3s ease both;
 }
 
 .table tbody tr:last-child td { border-bottom: none; }
 
 .table tbody tr:hover td { background: var(--bg-hover); }
+
+/* ── react-transition-group: tbody page transition ── */
+.tbodyEnter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.tbodyEnterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+.tbodyExit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tbodyExitActive {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* stagger each row while entering */
+.tbodyEnterActive tr:nth-child(1) { transition-delay: 0ms;   }
+.tbodyEnterActive tr:nth-child(2) { transition-delay: 40ms;  }
+.tbodyEnterActive tr:nth-child(3) { transition-delay: 80ms;  }
+.tbodyEnterActive tr:nth-child(4) { transition-delay: 120ms; }
+.tbodyEnterActive tr:nth-child(5) { transition-delay: 160ms; }
 
 /* Status badge */
 .badge {
@@ -60,13 +86,13 @@
   text-transform: uppercase;
 }
 
-.badgeBusy {
+.badgePending {
   background: var(--warning-dim);
   color: var(--warning);
   border: 1px solid rgba(255, 183, 0, 0.3);
 }
 
-.badgePending {
+.badgeBusy {
   background: var(--success-dim);
   color: var(--success);
   border: 1px solid rgba(0, 229, 160, 0.3);
