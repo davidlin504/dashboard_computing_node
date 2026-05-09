@@ -5,9 +5,11 @@ import { IconSearch, IconRefresh } from '../assets/icons/icons.jsx'
 import styles from '../styles/HostsPage.module.css'
 
 const FILTERS = [
-  { label: 'ALL',     value: 'all'     },
-  { label: 'PENDING', value: 'pending' },
-  { label: 'BUSY',    value: 'busy'    },
+  { label: 'ALL', value: 'all', filter: 'all'},
+  { label: 'On', value: 'on' ,filter: 1},
+  { label: 'Off', value: 'off' ,filter: 0},
+  { label: 'PENDING', value: 'pending' ,filter: 'pending'},
+  { label: 'BUSY',    value: 'busy' ,filter: 'busy'},
 ]
 
 export default function HostsPage({ onRequireLogin }) {
@@ -25,13 +27,15 @@ export default function HostsPage({ onRequireLogin }) {
   const filtered = useMemo(() => {
     return hosts.filter(h => {
       const matchSearch = search.trim() === '' || h.bmc_ip.includes(search.trim())
-      const matchFilter = filter === 'all' || h.status === filter
+      const matchFilter = filter === 'all' || h.status === filter || h.power === filter
       return matchSearch && matchFilter
     })
   }, [hosts, search, filter])
 
   const counts = useMemo(() => ({
     all: hosts.length,
+    on: hosts.filter(h => h.power === 1).length,
+    off: hosts.filter(h => h.power === 0).length,
     pending: hosts.filter(h => h.status === 'pending').length,
     busy: hosts.filter(h => h.status === 'busy').length,
   }), [hosts])
@@ -85,7 +89,7 @@ export default function HostsPage({ onRequireLogin }) {
             <button
               key={f.value}
               className={`${styles.filterTab} ${filter === f.value ? styles.filterTabActive : ''}`}
-              onClick={() => setFilter(f.value)}
+              onClick={() => setFilter(f.filter)}
             >
               {f.label}
               {f.value !== 'all' && (

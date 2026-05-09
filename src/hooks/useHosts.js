@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth'
 import { API } from '../constants'
 
 export function useHosts() {
-  const [hosts, setHosts] = useState({})
+  const [hosts, setHosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 

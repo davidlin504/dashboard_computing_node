@@ -16,9 +16,9 @@ export function formatTimestamp(ts) {
  */
 export const MOCK_HOSTS = [
   { bmc_ip: '172.16.87.10', os_ip: '192.16.87.10', mac_address: '00:1A:2B:3C:4D:5E', power: 1, cpu: 'intel_6515', active: true,  status: 'busy'    },
-  { bmc_ip: '172.16.87.11', os_ip: '192.16.87.11', mac_address: '00:1A:2B:3C:4D:5F', power: 0, cpu: 'intel_6515', active: true,  status: 'pending'  },
+  { bmc_ip: '172.16.87.11', os_ip: '192.16.87.11', mac_address: '00:1A:2B:3C:4D:5F', power: 1, cpu: 'intel_6515', active: true,  status: 'pending'  },
   { bmc_ip: '172.16.87.12', os_ip: '192.16.87.12', mac_address: 'AA:BB:CC:DD:EE:01', power: 1, cpu: 'amd_epyc_7742', active: true,  status: 'busy'    },
-  { bmc_ip: '172.16.87.13', os_ip: '192.16.87.13', mac_address: 'AA:BB:CC:DD:EE:02', power: 0, cpu: 'amd_epyc_7742', active: false, status: 'pending'  },
+  { bmc_ip: '172.16.87.13', os_ip: '192.16.87.13', mac_address: 'AA:BB:CC:DD:EE:02', power: 1, cpu: 'amd_epyc_7742', active: false, status: 'pending'  },
   { bmc_ip: '172.16.87.14', os_ip: '192.16.87.14', mac_address: 'AA:BB:CC:DD:EE:03', power: 1, cpu: 'intel_xeon_8380', active: true,  status: 'busy'    },
   { bmc_ip: '172.16.87.15', os_ip: '192.16.87.15', mac_address: 'AA:BB:CC:DD:EE:04', power: 0, cpu: 'intel_xeon_8380', active: true,  status: 'pending'  },
   { bmc_ip: '172.16.87.16', os_ip: '192.16.87.16', mac_address: 'AA:BB:CC:DD:EE:05', power: 1, cpu: 'amd_epyc_9654', active: true,  status: 'busy'    },
