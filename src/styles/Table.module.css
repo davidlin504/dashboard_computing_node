@@ -86,13 +86,13 @@
   text-transform: uppercase;
 }
 
-.badgePending {
+.badgeBusy {
   background: var(--warning-dim);
   color: var(--warning);
   border: 1px solid rgba(255, 183, 0, 0.3);
 }
 
-.badgeBusy {
+.badgePending {
   background: var(--success-dim);
   color: var(--success);
   border: 1px solid rgba(0, 229, 160, 0.3);

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { usePowerOn } from '../hooks/useHosts'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
@@ -60,6 +60,11 @@ export default function HostsTable({ hosts, onRequireLogin }) {
   const { powerOperation, loadingMap } = usePowerOn()
   const [page, setPage] = useState(1)
   const tbodyRef = useRef(null)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPage(1)
+  }, [hosts])
 
   const sliced = hosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 

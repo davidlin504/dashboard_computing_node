@@ -5,9 +5,14 @@ import { useError } from '../hooks/useError'
 import { API } from '../constants'
 
 export function useHosts() {
-  const [hosts, setHosts] = useState([])
+  const [hosts, setHosts] = useState(MOCK_HOSTS)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  // const loadMockData = async () => {
+  //   const data = await Promise.resolve(MOCK_HOSTS);
+  //   setHosts(data);
+  // };
 
   const fetchHosts = useCallback(async () => {
     setLoading(true)
@@ -20,7 +25,6 @@ export function useHosts() {
     } catch (err) {
       // Fall back to mock data when backend is unavailable
       console.warn('Backend unavailable, using mock data:', err.message)
-      setHosts(MOCK_HOSTS)
     } finally {
       setLoading(false)
     }
