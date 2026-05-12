@@ -99,6 +99,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
               {/* <th>OS_IP</th> */}
               <th>MAC</th>
               <th>Model</th>
+              <th>OS</th>
               <th>CPU</th>
               <th>電源</th>
               <th>狀態</th>
@@ -137,6 +138,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                       {/* <td><span className={styles.mono}>{host.os_ip}</span></td> */}
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.mac_address}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.model}</span></td>
+                      <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.os}</span></td>
                       <td>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                           <IconCpu style={{ width: 15, height: 15, color: 'var(--text-muted)', flexShrink: 0 }} />
@@ -172,7 +174,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                           {loadingMap[host.bmc_ip] ? (
                             <><IconPowerLoading style={{ width: 16, height: 16, animation: 'spin 0.9s linear infinite' }} />處理中</>
                           ) : (
-                            <><IconPower style={{ width: 15, height: 15 }} />{host.power === 1 ? '關機' : '開機'}</>
+                            <><IconPower style={{ width: 15, height: 15 }} /><span className={styles.power_action}>{host.power === 1 ? '關機' : '開機'}</span></>
                           )}
                         </button>
                       </td>

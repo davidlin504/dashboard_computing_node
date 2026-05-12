@@ -247,3 +247,9 @@
   font-size: 1rem;
   color: var(--text-muted);
 }
+
+.power_action {
+  white-space: nowrap;
+  /* color: var(--accent);
+  transition: color var(--transition); */
+}
