@@ -10,6 +10,7 @@ lerna-debug.log*
 # Build output
 dist/
 dist-ssr/
+dist-apache/
 *.local
 
 # Dependencies
@@ -36,6 +37,7 @@ Thumbs.db
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*
 
 # Vite-specific cache
 .vite/

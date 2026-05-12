@@ -115,3 +115,20 @@ export const IconDatabase = ({ className, style }) => (
     <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>
   </svg>
 )
+
+// Power off — same geometry as IconPower but the arc is dashed to signal inactive
+export const IconPowerOff = ({ className, style }) => (
+  <svg className={className} style={style} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3v6" strokeDasharray="2 2"/>
+    <path d="M8.5 5.5A8 8 0 1 0 15.5 5.5" strokeDasharray="4 2"/>
+  </svg>
+)
+
+// Power loading — spinning arc, no stem, animate with CSS: animation: spin 0.9s linear infinite
+export const IconPowerLoading = ({ className, style }) => (
+  <svg className={className} style={style} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3v6"/>
+    {/* 270° arc, leaving a gap at the top where the stem is */}
+    <path d="M15.5 5.5A8 8 0 1 1 8.5 5.5"/>
+  </svg>
+)

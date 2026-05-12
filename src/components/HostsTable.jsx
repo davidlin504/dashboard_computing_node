@@ -3,7 +3,8 @@ import { useAuth } from '../hooks/useAuth'
 import { usePowerOn } from '../hooks/useHosts'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import {
-  IconPower, IconCpu, IconChevronLeft, IconChevronRight, IconDatabase
+  IconPower, IconCpu, IconChevronLeft, IconChevronRight, IconDatabase,
+  IconPowerOff, IconPowerLoading
 } from '../assets/icons/icons.jsx'
 import styles from '../styles/Table.module.css'
 
@@ -55,7 +56,7 @@ function Pagination({ hostsLength, page, setPage, summary = true }) {
   )
 }
 
-export default function HostsTable({ hosts, onRequireLogin }) {
+export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
   const { isLoggedIn } = useAuth()
   const { powerOperation, loadingMap } = usePowerOn()
   const [page, setPage] = useState(1)
@@ -78,7 +79,7 @@ export default function HostsTable({ hosts, onRequireLogin }) {
       onRequireLogin()
       return
     }
-    await powerOperation(bmc_ip, power)
+    await powerOperation(bmc_ip, power, onUpdate)
   }
 
   return (
@@ -95,8 +96,9 @@ export default function HostsTable({ hosts, onRequireLogin }) {
           <thead>
             <tr>
               <th>BMC_IP</th>
-              <th>OS_IP</th>
+              {/* <th>OS_IP</th> */}
               <th>MAC</th>
+              <th>Model</th>
               <th>CPU</th>
               <th>電源</th>
               <th>狀態</th>
@@ -132,8 +134,9 @@ export default function HostsTable({ hosts, onRequireLogin }) {
                   sliced.map((host, i) => (
                     <tr key={host.bmc_ip} style={{ animationDelay: `${i * 50}ms` }}>
                       <td><span className={styles.mono}>{host.bmc_ip}</span></td>
-                      <td><span className={styles.mono}>{host.os_ip}</span></td>
+                      {/* <td><span className={styles.mono}>{host.os_ip}</span></td> */}
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.mac_address}</span></td>
+                      <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.model}</span></td>
                       <td>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                           <IconCpu style={{ width: 15, height: 15, color: 'var(--text-muted)', flexShrink: 0 }} />
@@ -148,7 +151,7 @@ export default function HostsTable({ hosts, onRequireLogin }) {
                           </span>
                         ) : (
                           <span className={styles.powerOff}>
-                            <IconPower style={{ width: 16, height: 16 }} />
+                            <IconPowerOff style={{ width: 16, height: 16 }} />
                             OFF
                           </span>
                         )}
@@ -167,7 +170,7 @@ export default function HostsTable({ hosts, onRequireLogin }) {
                           title={isLoggedIn ? '開機' : '需要登入'}
                         >
                           {loadingMap[host.bmc_ip] ? (
-                            <><span className={styles.spinner} />處理中</>
+                            <><IconPowerLoading style={{ width: 16, height: 16, animation: 'spin 0.9s linear infinite' }} />處理中</>
                           ) : (
                             <><IconPower style={{ width: 15, height: 15 }} />{host.power === 1 ? '關機' : '開機'}</>
                           )}

@@ -1,12 +1,12 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   # 設定基礎路徑為你的子目錄
-  RewriteBase /demo/
+  RewriteBase /aidc-support/
 
   RewriteRule ^index\.html$ - [L]
 
   # 如果請求的不是真實存在的檔案或目錄，就全部導向 index.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /demo/index.html [L]
+  RewriteRule . /aidc-support/index.html [L]
 </IfModule>

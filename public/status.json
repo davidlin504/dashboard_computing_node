@@ -1,0 +1,52 @@
+[
+  {
+    "bmc_ip": "172.16.87.158",
+    "os_ip": "",
+    "mac_address": "A0:36:BC:C7:70:75",
+    "power": 1,
+    "cpu": "Intel(R) Xeon(R) Silver 4410T 0x6",
+    "model": "RS700-E11-RS12U",
+    "active": true,
+    "status": "pending"
+  },
+  {
+    "bmc_ip": "172.16.87.168",
+    "os_ip": "",
+    "mac_address": "A0:36:BC:C7:70:75",
+    "power": 1,
+    "cpu": "Intel(R) Xeon(R) Silver 4410T 0x6",
+    "model": "RS700-E11-RS12U",
+    "active": true,
+    "status": "pending"
+  },
+  {
+    "bmc_ip": "172.16.87.145",
+    "os_ip": "",
+    "mac_address": "A0:36:BC:C8:6B:E9",
+    "power": 1,
+    "cpu": "NA AMD EPYC 9254 24-Core Processor",
+    "model": "RS720A-E12-RS12",
+    "active": true,
+    "status": "pending"
+  },
+  {
+    "bmc_ip": "172.16.87.148",
+    "os_ip": "",
+    "mac_address": "A0:36:BC:C8:6B:E9",
+    "power": 1,
+    "cpu": "NA AMD EPYC 9254 24-Core Processor",
+    "model": "RS720A-E12-RS12",
+    "active": true,
+    "status": "pending"
+  },
+  {
+    "bmc_ip": "192.168.87.192",
+    "os_ip": "192.168.87.198",
+    "mac_address": "",
+    "power": 1,
+    "cpu": "amd epyc 9454",
+    "model": "RS520A-E12-RS12U",
+    "active": true,
+    "status": "busy"
+  }
+]

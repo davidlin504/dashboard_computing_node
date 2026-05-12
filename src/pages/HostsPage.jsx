@@ -13,7 +13,7 @@ const FILTERS = [
 ]
 
 export default function HostsPage({ onRequireLogin }) {
-  const { hosts, loading, refetch } = useHosts()
+  const { hosts, setHosts, loading, refetch } = useHosts()
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('all')
   const [refreshing, setRefreshing] = useState(false)
@@ -31,6 +31,12 @@ export default function HostsPage({ onRequireLogin }) {
       return matchSearch && matchFilter
     })
   }, [hosts, search, filter])
+
+  const updateHost = (bmcIp, newData) => {
+    // Update the specific host in the state
+    const updatedHosts = hosts.map(h => h.bmc_ip === bmcIp ? { ...h, ...newData } : h)
+    setHosts(updatedHosts)  // Uncomment if you want to update local state immediately
+  }
 
   const counts = useMemo(() => ({
     all: hosts.length,
@@ -108,7 +114,7 @@ export default function HostsPage({ onRequireLogin }) {
           載入中...
         </div>
       ) : (
-        <HostsTable hosts={filtered} onRequireLogin={onRequireLogin} />
+        <HostsTable hosts={filtered} onRequireLogin={onRequireLogin} onUpdate={updateHost} />
       )}
     </main>
   )
