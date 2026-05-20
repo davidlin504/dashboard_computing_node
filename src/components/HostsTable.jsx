@@ -96,7 +96,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
           <thead>
             <tr>
               <th>BMC_IP</th>
-              {/* <th>OS_IP</th> */}
+              <th>OS_IP</th>
               <th>MAC</th>
               <th>Model</th>
               <th>OS</th>
@@ -135,7 +135,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                   sliced.map((host, i) => (
                     <tr key={host.bmc_ip} style={{ animationDelay: `${i * 50}ms` }}>
                       <td><span className={styles.mono}>{host.bmc_ip}</span></td>
-                      {/* <td><span className={styles.mono}>{host.os_ip}</span></td> */}
+                      <td><span className={styles.mono}>{host.os_ip}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.mac_address}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.model}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.os}</span></td>

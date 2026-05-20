@@ -1,18 +1,7 @@
 [
   {
     "bmc_ip": "172.16.87.158",
-    "os_ip": "172.16.87.162",
-    "mac_address": "A0:36:BC:C7:70:75",
-    "power": 1,
-    "cpu": "Intel(R) Xeon(R) Silver 4410T 0x6",
-    "model": "RS700-E11-RS12U",
-    "active": true,
-    "status": "pending",
-    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)"
-  },
-  {
-    "bmc_ip": "172.16.87.168",
-    "os_ip": "172.16.87.162",
+    "os_ip": "",
     "mac_address": "A0:36:BC:C7:70:75",
     "power": 1,
     "cpu": "Intel(R) Xeon(R) Silver 4410T 0x6",
@@ -42,6 +31,17 @@
     "active": true,
     "status": "pending",
     "os": "Red Hat Enterprise Linux 8.9 (Ootpa)"
+  },
+  {
+    "bmc_ip": "172.16.87.245",
+    "os_ip": "172.16.87.244",
+    "mac_address": "10:7C:61:59:57:65",
+    "power": 1,
+    "cpu": "Intel(R) Xeon(R) 6517P",
+    "model": "RS720-E12-RS8G",
+    "active": true,
+    "status": "pending",
+    "os": "22.04.5 LTS (Jammy Jellyfish)"
   },
   {
     "bmc_ip": "192.168.87.192",

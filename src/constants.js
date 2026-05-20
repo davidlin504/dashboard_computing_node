@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:8000'
+const API_BASE = 'http://192.168.87.198:8000'
 
 export const API = {
   'hosts': `${API_BASE}/hosts`,
