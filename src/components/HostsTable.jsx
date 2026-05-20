@@ -67,7 +67,11 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
     setPage(1)
   }, [hosts])
 
-  const sliced = hosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+  const uniqueHosts = hosts.filter((item, index, self) =>
+    self.findIndex(t => t.mac_address === item.mac_address) === index
+  );
+
+  const sliced = uniqueHosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   // exit duration must match tbodyExitActive transition duration (0.15s)
   const EXIT_DURATION = 150
@@ -97,7 +101,8 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
             <tr>
               <th>BMC_IP</th>
               <th>OS_IP</th>
-              <th>MAC</th>
+              <th>DM_LAN MAC</th>
+              <th>Platform</th>
               <th>Model</th>
               <th>OS</th>
               <th>CPU</th>
@@ -137,6 +142,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                       <td><span className={styles.mono}>{host.bmc_ip}</span></td>
                       <td><span className={styles.mono}>{host.os_ip}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.mac_address}</span></td>
+                      <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.platform}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.model}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.os}</span></td>
                       <td>

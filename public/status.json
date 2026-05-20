@@ -3,6 +3,7 @@
     "bmc_ip": "172.16.87.158",
     "os_ip": "",
     "mac_address": "A0:36:BC:C7:70:75",
+    "platform": "Z13PP-D32",
     "power": 1,
     "cpu": "Intel(R) Xeon(R) Silver 4410T 0x6",
     "model": "RS700-E11-RS12U",
@@ -14,6 +15,7 @@
     "bmc_ip": "172.16.87.145",
     "os_ip": "172.16.87.225",
     "mac_address": "A0:36:BC:C8:6B:E9",
+    "platform": "K14PP-D24",
     "power": 1,
     "cpu": "NA AMD EPYC 9254 24-Core Processor",
     "model": "RS720A-E12-RS12",
@@ -25,6 +27,7 @@
     "bmc_ip": "172.16.87.148",
     "os_ip": "172.16.87.225",
     "mac_address": "A0:36:BC:C8:6B:E9",
+    "platform": "K14PP-D24",
     "power": 1,
     "cpu": "NA AMD EPYC 9254 24-Core Processor",
     "model": "RS720A-E12-RS12",
@@ -36,6 +39,7 @@
     "bmc_ip": "172.16.87.245",
     "os_ip": "172.16.87.244",
     "mac_address": "10:7C:61:59:57:65",
+    "platform": "Z14PP-D32",
     "power": 1,
     "cpu": "Intel(R) Xeon(R) 6517P",
     "model": "RS720-E12-RS8G",
@@ -45,13 +49,14 @@
   },
   {
     "bmc_ip": "192.168.87.192",
-    "os_ip": "",
+    "os_ip": "192.168.87.198",
     "mac_address": "",
+    "platform": "K14PA-U24",
     "power": 1,
-    "cpu": "amd epyc 9454",
+    "cpu": "AMD EPYC 9454",
     "model": "RS520A-E12-RS12U",
     "active": true,
     "status": "busy",
-    "os": ""
+    "os": "Rocky Linux 8.10 (Green Obsidian)"
   }
 ]
