@@ -7,6 +7,8 @@ import {
   IconPowerOff, IconPowerLoading
 } from '../assets/icons/icons.jsx'
 import styles from '../styles/Table.module.css'
+import CopyButton from './CopyButton.jsx'
+
 
 const PAGE_SIZE = 5
 
@@ -93,7 +95,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
         <Pagination
           page={page}
           setPage={setPage}
-          hostsLength={hosts.length}
+          hostsLength={uniqueHosts.length}
         />
 
         <table className={styles.table}>
@@ -139,8 +141,8 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                 ) : (
                   sliced.map((host, i) => (
                     <tr key={host.bmc_ip} style={{ animationDelay: `${i * 50}ms` }}>
-                      <td><span className={styles.mono}>{host.bmc_ip}</span></td>
-                      <td><span className={styles.mono}>{host.os_ip}</span></td>
+                      <td><span className={styles.mono}>{host.bmc_ip}</span><CopyButton title="copy bmc ip" copiedVal={`https://${host.bmc_ip}`}/></td>
+                      <td><span className={styles.mono}>{host.os_ip}<CopyButton title="copy os ip" copiedVal={`ssh root@${host.os_ip}`} /></span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.mac_address}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.platform}</span></td>
                       <td><span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.model}</span></td>
@@ -194,7 +196,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
         <Pagination
           page={page}
           setPage={setPage}
-          hostsLength={hosts.length}
+          hostsLength={uniqueHosts.length}
         />
       </div>
     </div>

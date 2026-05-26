@@ -1,7 +1,7 @@
 [
   {
     "bmc_ip": "172.16.87.158",
-    "os_ip": "",
+    "os_ip": "172.16.87.246",
     "mac_address": "A0:36:BC:C7:70:75",
     "platform": "Z13PP-D32",
     "power": 1,
