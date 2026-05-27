@@ -16,6 +16,10 @@
   --warning-dim: rgba(255, 183, 0, 0.15);
   --danger: #ff4060;
   --danger-dim: rgba(255, 64, 96, 0.15);
+  --active: #00e5a0;
+  --active-dim: rgba(0, 229, 160, 0.15);
+  --inactive: #7a9bb5;
+  --inactive-dim: rgba(24, 21, 22, 0.15);
   --text-primary: #e2eaf5;
   --text-secondary: #7a9bb5;
   --text-muted: #3d5a75;

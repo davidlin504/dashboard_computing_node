@@ -7,8 +7,17 @@ import {
   IconPowerOff, IconPowerLoading
 } from '../assets/icons/icons.jsx'
 import styles from '../styles/Table.module.css'
+import statusStyle from '../styles/Status.module.css'
 import CopyButton from './CopyButton.jsx'
 
+function StatusBadge({ status }) {
+  return (
+    <span className={statusStyle.badge} data-status={status}>
+      <span className={statusStyle.dot} />
+      {status}
+    </span>
+  );
+}
 
 const PAGE_SIZE = 5
 
@@ -167,12 +176,15 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                         )}
                       </td>
                       <td>
-                        <span className={`${styles.badge} ${host.status === 'busy' ? styles.badgeBusy : styles.badgePending}`}>
-                          <span className={`${styles.dot} ${host.status === 'busy' ? styles.dotBusy : ''}`} />
-                          {host.status}
-                        </span>
+                        <StatusBadge status={host.status} />
                       </td>
                       <td>
+                        <span className={`${styles.badge} ${host.active ? styles.badgeActive : styles.badgeInActive}`}>
+                          <span className={styles.dot} />
+                          {host.active ? 'online' : 'offline'}
+                        </span>
+                      </td>
+                      {/* <td>
                         <button
                           className={`${styles.bootBtn} ${loadingMap[host.bmc_ip] ? styles.bootBtnLoading : ''}`}
                           onClick={() => handleBoot(host.bmc_ip, host.power)}
@@ -185,7 +197,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                             <><IconPower style={{ width: 15, height: 15 }} /><span className={styles.power_action}>{host.power === 1 ? '關機' : '開機'}</span></>
                           )}
                         </button>
-                      </td>
+                      </td> */}
                     </tr>
                   ))
                 )}

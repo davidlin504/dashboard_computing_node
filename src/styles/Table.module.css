@@ -98,6 +98,14 @@
   border: 1px solid rgba(0, 229, 160, 0.3);
 }
 
+.badgeActive {
+  color: var(--active);
+}
+
+.badgeInActive {
+  color: var(--inactive);
+}
+
 .dot {
   width: 6px;
   height: 6px;

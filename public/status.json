@@ -40,23 +40,23 @@
     "os_ip": "172.16.87.244",
     "mac_address": "10:7C:61:59:57:65",
     "platform": "Z14PP-D32",
-    "power": 1,
+    "power": 0,
     "cpu": "Intel(R) Xeon(R) 6517P",
     "model": "RS720-E12-RS8G",
-    "active": true,
-    "status": "pending",
+    "active": false,
+    "status": "idle",
     "os": "22.04.5 LTS (Jammy Jellyfish)"
   },
   {
     "bmc_ip": "192.168.87.192",
     "os_ip": "192.168.87.198",
-    "mac_address": "",
-    "platform": "K14PA-U24",
+    "mac_address": "A0:36:BC:74:D6:71",
+    "platform": "K14PA-U24-aidc-server",
     "power": 1,
     "cpu": "AMD EPYC 9454",
     "model": "RS520A-E12-RS12U",
     "active": true,
-    "status": "busy",
+    "status": "running",
     "os": "Rocky Linux 8.10 (Green Obsidian)"
   }
 ]

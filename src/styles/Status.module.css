@@ -1,0 +1,66 @@
+/* status.module.css */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge[data-status="idle"] {
+  background: var(--inactive-dim);
+  color: var(--inactive);
+}
+
+
+.badge[data-status="busy"] {
+  background: var(--warning-dim);
+  color: var(--warning);
+  border-color: rgba(255, 183, 0, 0.3);
+}
+
+.badge[data-status="pending"] {
+  background: var(--success-dim);
+  color: var(--success);
+  border-color: rgba(0, 229, 160, 0.3);
+}
+
+
+/* ── running ── */
+.badge[data-status="running"] {
+  background: rgba(30, 64, 175, 0.15);
+  color: rgb(30, 64, 175);
+  border-color: rgba(14, 58, 202, 0.3);
+}
+.badge[data-status="running"] .dot {
+  background: #3b82f6;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* ── busy ── */
+.badge[data-status="error"] {
+  background: rgba(153, 27, 27, 0.15);
+  color: #991b1b;
+}
+.badge[data-status="error"] .dot {
+  background: #ef4444;
+  animation: pulse 0.7s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
