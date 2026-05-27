@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:apache": "vite build --mode apache",
+    "preview:apache": "vite preview --outDir dist-apache --host",
     "preview": "vite preview"
   },
   "dependencies": {

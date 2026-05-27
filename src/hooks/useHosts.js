@@ -25,7 +25,7 @@ export function useHosts() {
     } catch (err) {
       // Fall back to mock data when backend is unavailable
       console.warn('Backend unavailable, using mock data:', err.message)
-      const mock_res = await fetch('./status.json')
+      const mock_res = await fetch(`${import.meta.env.VITE_APP_BASE}/status.json`)
       const mock_data = await mock_res.json()
       setHosts(mock_data)
     } finally {

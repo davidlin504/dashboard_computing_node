@@ -6,8 +6,8 @@ import styles from '../styles/HostsPage.module.css'
 
 const FILTERS = [
   { label: 'ALL', value: 'all', filter: 'all'},
-  { label: 'On', value: 'on' ,filter: 1},
-  { label: 'Off', value: 'off' ,filter: 0},
+  { label: 'ON', value: 'on' ,filter: 1},
+  { label: 'OFF', value: 'off' ,filter: 0},
   { label: 'PENDING', value: 'pending' ,filter: 'pending'},
   { label: 'BUSY',    value: 'busy' ,filter: 'busy'},
 ]

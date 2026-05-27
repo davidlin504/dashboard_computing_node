@@ -4,8 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+  const basePrefix = env.VITE_APP_BASE ? `${env.VITE_APP_BASE}/` : '/'
   return {
-    base: env.VITE_APP_BASE || '/',
+    base: basePrefix,
     server: {
       host: true,
       port: 5173,
