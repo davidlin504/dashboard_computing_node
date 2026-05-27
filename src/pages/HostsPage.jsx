@@ -53,6 +53,7 @@ export default function HostsPage({ onRequireLogin }) {
           <div>
             <h1 className={styles.pageTitle}>COMPUTE_HOSTS</h1>
             <p className={styles.pageSub}>運算機器管理系統 &nbsp;·&nbsp; 共 {hosts.length} 台</p>
+            <span>以 DM_LAN macaddress 區分</span>
           </div>
           <button className={styles.refreshBtn} onClick={handleRefresh} disabled={loading || refreshing}>
             <IconRefresh style={{ width: 16, height: 16 }} className={refreshing ? styles.refreshSpinner : ''} />

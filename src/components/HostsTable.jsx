@@ -78,11 +78,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
     setPage(1)
   }, [hosts])
 
-  const uniqueHosts = hosts.filter((item, index, self) =>
-    self.findIndex(t => t.mac_address === item.mac_address) === index
-  );
-
-  const sliced = uniqueHosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+  const sliced = hosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   // exit duration must match tbodyExitActive transition duration (0.15s)
   const EXIT_DURATION = 150
@@ -104,7 +100,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
         <Pagination
           page={page}
           setPage={setPage}
-          hostsLength={uniqueHosts.length}
+          hostsLength={hosts.length}
         />
 
         <table className={styles.table}>
@@ -208,7 +204,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
         <Pagination
           page={page}
           setPage={setPage}
-          hostsLength={uniqueHosts.length}
+          hostsLength={hosts.length}
         />
       </div>
     </div>

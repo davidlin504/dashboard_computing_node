@@ -13,7 +13,11 @@ export function useHosts() {
   //   const data = await Promise.resolve(MOCK_HOSTS);
   //   setHosts(data);
   // };
-
+  function getUniqueHosts(hosts) {
+    return hosts.filter((item, index, self) =>
+      self.findIndex(t => t.mac_address === item.mac_address) === index
+    );
+  }
   const fetchHosts = useCallback(async () => {
     setLoading(true)
     setError(null)
@@ -21,13 +25,15 @@ export function useHosts() {
       const res = await fetch(API.hosts)
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
-      setHosts(data)
+      const hosts = getUniqueHosts(data)
+      setHosts(hosts)
     } catch (err) {
       // Fall back to mock data when backend is unavailable
       console.warn('Backend unavailable, using mock data:', err.message)
       const mock_res = await fetch(`${import.meta.env.VITE_APP_BASE}/status.json`)
-      const mock_data = await mock_res.json()
-      setHosts(mock_data)
+      const data = await mock_res.json()
+      const hosts = getUniqueHosts(data)
+      setHosts(hosts)
     } finally {
       setLoading(false)
     }
