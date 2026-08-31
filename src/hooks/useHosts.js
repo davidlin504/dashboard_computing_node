@@ -22,18 +22,18 @@ export function useHosts() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(API.hosts)
+      const res = await fetch(API.static_hosts, { cache: 'no-store' })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
-      const hosts = getUniqueHosts(data)
-      setHosts(hosts)
+      // const hosts = getUniqueHosts(data)
+      setHosts(data)
     } catch (err) {
       // Fall back to mock data when backend is unavailable
       console.warn('Backend unavailable, using mock data:', err.message)
-      const mock_res = await fetch(`${import.meta.env.VITE_APP_BASE}/status.json`)
+      const mock_res = await fetch(`${import.meta.env.VITE_APP_BASE}/status.json`, { cache: 'no-store' })
       const data = await mock_res.json()
-      const hosts = getUniqueHosts(data)
-      setHosts(hosts)
+      // const hosts = getUniqueHosts(data)
+      setHosts(data)
     } finally {
       setLoading(false)
     }

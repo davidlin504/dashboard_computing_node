@@ -9,7 +9,21 @@
     "model": "RS700-E11-RS12U",
     "active": true,
     "status": "pending",
-    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)"
+    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)",
+    "note": "z13 bmc eth0"
+  },
+  {
+    "bmc_ip": "172.16.87.247",
+    "os_ip": "172.16.87.249",
+    "mac_address": "A0:AD:9F:25:A3:6D",
+    "platform": "Z14PP-D32",
+    "power": 1,
+    "cpu": "Intel(R) Xeon(R) 6517P",
+    "model": "RS700-E12-RS12U",
+    "active": true,
+    "status": "pending",
+    "os": "22.04.5 LTS (Jammy Jellyfish)",
+    "note": "z14 bmc eth0"
   },
   {
     "bmc_ip": "172.16.87.145",
@@ -21,7 +35,8 @@
     "model": "RS720A-E12-RS12",
     "active": true,
     "status": "pending",
-    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)"
+    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)",
+    "note": "k14 eth0 and eth1 are connected to the same switch, so only one of them is used for the OS IP. The other one is not used."
   },
   {
     "bmc_ip": "172.16.87.148",
@@ -33,19 +48,8 @@
     "model": "RS720A-E12-RS12",
     "active": true,
     "status": "pending",
-    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)"
-  },
-  {
-    "bmc_ip": "172.16.87.245",
-    "os_ip": "172.16.87.244",
-    "mac_address": "10:7C:61:59:57:65",
-    "platform": "Z14PP-D32",
-    "power": 0,
-    "cpu": "Intel(R) Xeon(R) 6517P",
-    "model": "RS720-E12-RS8G",
-    "active": false,
-    "status": "idle",
-    "os": "22.04.5 LTS (Jammy Jellyfish)"
+    "os": "Red Hat Enterprise Linux 8.9 (Ootpa)",
+    "note": "k14 eth0 and eth1 are connected to the same switch, so only one of them is used for the OS IP. The other one is not used."
   },
   {
     "bmc_ip": "192.168.87.192",
@@ -57,6 +61,7 @@
     "model": "RS520A-E12-RS12U",
     "active": true,
     "status": "running",
-    "os": "Rocky Linux 8.10 (Green Obsidian)"
+    "os": "Rocky Linux 8.10 (Green Obsidian)",
+    "note": "this aidc server"
   }
 ]

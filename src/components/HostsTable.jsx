@@ -115,7 +115,7 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
               <th>CPU</th>
               <th>電源</th>
               <th>狀態</th>
-              <th>操作</th>
+              <th>Note</th>
             </tr>
           </thead>
 
@@ -175,11 +175,14 @@ export default function HostsTable({ hosts, onRequireLogin, onUpdate }) {
                         <StatusBadge status={host.status} />
                       </td>
                       <td>
+                        <span className={styles.mono} style={{ fontSize: '0.85rem' }}>{host.note}</span>
+                      </td>
+                      {/* <td>
                         <span className={`${styles.badge} ${host.active ? styles.badgeActive : styles.badgeInActive}`}>
                           <span className={styles.dot} />
                           {host.active ? 'online' : 'offline'}
                         </span>
-                      </td>
+                      </td> */}
                       {/* <td>
                         <button
                           className={`${styles.bootBtn} ${loadingMap[host.bmc_ip] ? styles.bootBtnLoading : ''}`}
